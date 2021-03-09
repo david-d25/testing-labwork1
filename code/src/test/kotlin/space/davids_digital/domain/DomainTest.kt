@@ -1,4 +1,4 @@
-package domain
+package space.davids_digital.domain
 
 import main.kotlin.domain.*
 import org.junit.jupiter.api.Assertions.*

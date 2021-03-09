@@ -1,4 +1,6 @@
-import main.kotlin.ScrapMath.Companion.scrapAtan
+package space.davids_digital
+
+import main.kotlin.space.davids_digital.ScrapMath.Companion.scrapAtan
 import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Timeout

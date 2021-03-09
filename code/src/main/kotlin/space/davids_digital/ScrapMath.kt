@@ -1,8 +1,7 @@
-package main.kotlin
+package main.kotlin.space.davids_digital
 
 import java.lang.IllegalArgumentException
 import kotlin.math.abs
-import kotlin.math.floor
 import kotlin.math.pow
 import kotlin.math.sign
 
