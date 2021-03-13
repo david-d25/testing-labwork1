@@ -1,7 +1,7 @@
 package space.davids_digital
 
 import main.kotlin.space.davids_digital.UndirectedGraph
-import org.junit.Test
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.assertThrows
 import java.lang.IllegalArgumentException
