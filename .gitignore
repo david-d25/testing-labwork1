@@ -1,2 +1,4 @@
 code/.idea
 code/target
+*.iml
+~$*.docx
