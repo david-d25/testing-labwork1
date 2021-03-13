@@ -1,18 +1,24 @@
 package space.davids_digital
 
-import main.kotlin.space.davids_digital.ScrapMath.Companion.scrapAtan
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Timeout
+import org.junit.jupiter.api.assertDoesNotThrow
 import org.junit.jupiter.api.assertThrows
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvFileSource
+import space.davids_digital.ScrapMath.Companion.scrapAtan
 import java.lang.Math.PI
 import java.util.concurrent.TimeUnit.SECONDS
 
 class ScrapMathTest {
     companion object {
         private const val DELTA = 0.0000001
+    }
+
+    @Test
+    fun `class can be instantiated`() {
+        assertDoesNotThrow { ScrapMath() }
     }
 
     @Test

@@ -1,6 +1,5 @@
 package space.davids_digital
 
-import main.kotlin.space.davids_digital.UndirectedGraph
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.assertThrows
@@ -26,6 +25,15 @@ class UndirectedGraphTest {
     @Test
     fun `search by out-of-bounds vertex index throws exception`() {
         assertThrows<IllegalArgumentException> { UndirectedGraph(1).breadthFirstSearch(1) }
+    }
+
+    @Test
+    fun `adding wrong edge throws exception`() {
+        val graph = UndirectedGraph(1)
+        assertThrows<IllegalArgumentException> { graph.addEdge(0, -1) }
+        assertThrows<IllegalArgumentException> { graph.addEdge(-1, 0) }
+        assertThrows<IllegalArgumentException> { graph.addEdge(0, 1) }
+        assertThrows<IllegalArgumentException> { graph.addEdge(1, 0) }
     }
 
     @Test

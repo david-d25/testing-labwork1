@@ -1,4 +1,4 @@
-package main.kotlin.space.davids_digital
+package space.davids_digital
 
 import java.lang.IllegalArgumentException
 import kotlin.math.abs
@@ -7,7 +7,7 @@ import kotlin.math.sign
 
 class ScrapMath {
     companion object {
-        const val MIN_ERROR = 10e-8
+        private const val MIN_ERROR = 10e-8
 
         fun scrapAtan(x: Double, maxError: Double): Double {
             if (maxError.isNaN())

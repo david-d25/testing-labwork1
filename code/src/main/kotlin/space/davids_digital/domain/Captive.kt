@@ -1,4 +1,4 @@
-package main.kotlin.domain
+package space.davids_digital.domain
 
 import java.text.MessageFormat
 

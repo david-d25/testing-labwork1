@@ -1,4 +1,4 @@
-package main.kotlin.domain
+package space.davids_digital.domain
 
 // https://thehitchhikersguidetothegalaxy.fandom.com/ru/wiki/%D0%9F%D1%80%D0%BE%D1%81%D1%82%D0%B0%D1%82%D0%BD%D0%B8%D0%BA_%D0%94%D0%B6%D0%B5%D0%BB%D1%8C%D1%86
 open class Vogon(
@@ -42,12 +42,14 @@ open class Vogon(
                 if (durationMs >= SLOW_SMILE_THRESHOLD_MS)
                     println("$name вспомнил, как улыбаться")
                 super.trySmile(durationMs)
-            } catch (ex: InterruptedSmilingException) {
-                println("Что-то прервало размышления и $name не вспомнил, как улыбаться")
-                throw InterruptedSmilingException()
-            } catch (ex: InterruptedException) {
-                println("Что-то прервало размышления и $name не вспомнил, как улыбаться")
-                throw InterruptedSmilingException()
+            } catch (ex: Exception) {
+                when (ex) {
+                    is InterruptedSmilingException, is InterruptedException -> {
+                        println("Что-то прервало размышления и $name не вспомнил, как улыбаться")
+                        throw InterruptedSmilingException()
+                    }
+                    else -> throw ex
+                }
             }
         } else {
             println("$name не улыбнулся, потому что не готов к гнусности")

@@ -1,4 +1,4 @@
-package main.kotlin.space.davids_digital
+package space.davids_digital
 
 import java.lang.IllegalArgumentException
 import java.util.*

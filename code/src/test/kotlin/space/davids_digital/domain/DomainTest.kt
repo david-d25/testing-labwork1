@@ -1,6 +1,5 @@
 package space.davids_digital.domain
 
-import main.kotlin.domain.*
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 
@@ -39,8 +38,14 @@ class DomainTest {
     }
 
     @Test
-    fun `smiling with negative argument throws exception`() {
+    fun `vogon smiling with negative argument throws exception`() {
         val vogon = Vogon("Простатник Джельц")
+        assertThrows(IllegalArgumentException::class.java) { vogon.trySmile(-1) }
+    }
+
+    @Test
+    fun `creature smiling with negative argument throws exception`() {
+        val vogon = Creature("Создание")
         assertThrows(IllegalArgumentException::class.java) { vogon.trySmile(-1) }
     }
 
@@ -53,9 +58,17 @@ class DomainTest {
     }
 
     @Test
+    fun `vogon can smile slowly`() {
+        val vogon = Vogon("Простатник Джельц")
+        val captive1 = Captive("Пленник 1")
+        vogon.yellAt(captive1)
+        vogon.trySmile(Vogon.SLOW_SMILE_THRESHOLD_MS.toLong())
+    }
+
+    @Test
     fun `interrupting creature smiling throws exception`() {
         val thisThread = Thread.currentThread()
-        val thread = Thread { thisThread.interrupt() }
+        val thread = Thread { Thread.sleep(200); thisThread.interrupt() }
         val creature = Creature("Любое существо")
         thread.start()
         assertThrows(InterruptedSmilingException::class.java) { creature.trySmile(1000) }
@@ -65,7 +78,7 @@ class DomainTest {
     @Test
     fun `interrupting vogon smiling throws exception`() {
         val thisThread = Thread.currentThread()
-        val thread = Thread { thisThread.interrupt() }
+        val thread = Thread { Thread.sleep(200); thisThread.interrupt() }
         val vogon = Vogon("Спидвагон")
         vogon.yellAt(Captive("Пленник Спидвагона"))
         thread.start()

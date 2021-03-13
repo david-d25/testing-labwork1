@@ -1,4 +1,4 @@
-package main.kotlin.domain
+package space.davids_digital.domain
 
 open class Creature(var name: String): CanSmile {
     override fun trySmile(durationMs: Long) {
