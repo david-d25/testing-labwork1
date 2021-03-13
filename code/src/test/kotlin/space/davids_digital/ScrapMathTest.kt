@@ -92,7 +92,7 @@ class ScrapMathTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = ["/scrap_math_test.csv"], delimiter = ';')
-    fun `parametrized test`(argument: Double, expectedResult: Double) {
+    fun `parameterized test`(argument: Double, expectedResult: Double) {
         assertEquals(expectedResult, scrapAtan(argument, DELTA), DELTA)
     }
 }
