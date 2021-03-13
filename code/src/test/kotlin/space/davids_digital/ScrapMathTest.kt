@@ -5,6 +5,10 @@ import org.junit.Test
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Timeout
 import org.junit.jupiter.api.assertThrows
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.CsvFileSource
+import org.junit.jupiter.params.provider.CsvSource
+import org.junit.jupiter.params.provider.ValueSource
 import java.lang.IllegalArgumentException
 import java.lang.Math.PI
 import java.util.concurrent.TimeUnit.SECONDS
@@ -48,22 +52,22 @@ class ScrapMathTest {
 
     @Test
     fun `x = 1`() {
-        assertEquals(PI /4, scrapAtan(1.0, DELTA), DELTA)
+        assertEquals(PI/4, scrapAtan(1.0, DELTA), DELTA)
     }
 
     @Test
     fun `x = -1`() {
-        assertEquals(-PI /4, scrapAtan(-1.0, DELTA), DELTA)
+        assertEquals(-PI/4, scrapAtan(-1.0, DELTA), DELTA)
     }
     
     @Test
     fun `x = +INF`() {
-        assertEquals(PI /2, scrapAtan(Double.POSITIVE_INFINITY, DELTA), DELTA)
+        assertEquals(PI/2, scrapAtan(Double.POSITIVE_INFINITY, DELTA), DELTA)
     }
 
     @Test
     fun `x = -INF`() {
-        assertEquals(-PI /2, scrapAtan(Double.NEGATIVE_INFINITY, DELTA), DELTA)
+        assertEquals(-PI/2, scrapAtan(Double.NEGATIVE_INFINITY, DELTA), DELTA)
     }
 
     @Test
@@ -84,5 +88,11 @@ class ScrapMathTest {
     @Test
     fun `x less than -1`() {
         assertEquals(-0.982793723, scrapAtan(-1.5, DELTA), DELTA)
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = ["/scrap_math_test.csv"], delimiter = ';')
+    fun `parametrized test`(argument: Double, expectedResult: Double) {
+        assertEquals(expectedResult, scrapAtan(argument, DELTA), DELTA)
     }
 }
