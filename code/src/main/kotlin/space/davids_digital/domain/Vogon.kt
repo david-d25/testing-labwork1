@@ -48,7 +48,6 @@ open class Vogon(
                         println("Что-то прервало размышления и $name не вспомнил, как улыбаться")
                         throw InterruptedSmilingException()
                     }
-                    else -> throw ex
                 }
             }
         } else {
